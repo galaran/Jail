@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import net.milkbowl.vault.permission.Permission;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -23,11 +24,12 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 public class Util {
+    public static final String COLOR_PREFIX = String.valueOf(ChatColor.COLOR_CHAR);
     public static Permission permission = null;
 	
 	public static void Message(String message, Player player)
 	{
-		message = message.replaceAll("\\&([0-9abcdef])", "§$1");
+		message = message.replaceAll("\\&([0-9abcdef])", COLOR_PREFIX + "$1");
 		
 		String color = "f";
 		final int maxLength = 61; //Max length of chat text message
@@ -38,14 +40,14 @@ public class Util {
         int lineNumber = 0;
         for (int i = 0; i < words.length; i++) {
                 if (chat.get(lineNumber).length() + words[i].length() < maxLength && !words[i].equals(newLine)) {
-                        chat.set(lineNumber, chat.get(lineNumber) + (chat.get(lineNumber).length() > 0 ? " " : "§" + color ) + words[i]);
+                        chat.set(lineNumber, chat.get(lineNumber) + (chat.get(lineNumber).length() > 0 ? " " : COLOR_PREFIX + color ) + words[i]);
 
-                        if (words[i].contains("§")) color = Character.toString(words[i].charAt(words[i].indexOf("§") + 1));
+                        if (words[i].contains(COLOR_PREFIX)) color = Character.toString(words[i].charAt(words[i].indexOf(COLOR_PREFIX) + 1));
                 }
                 else {
                         lineNumber++;
                         if (!words[i].equals(newLine)) {
-                                chat.add(lineNumber,  "§" + color + words[i]);
+                                chat.add(lineNumber,  COLOR_PREFIX + color + words[i]);
                         }
                         else
                                 chat.add(lineNumber, "");

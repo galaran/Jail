@@ -627,7 +627,7 @@ public class JailPrisoner {
 			for (Sign sign : cell.getSigns())
 			{
 				String set = getJail().getSettings().getString(Setting.SignText) ;
-				set = set.replaceAll("\\&([0-9abcdef])", "§$1");
+				set = set.replaceAll("\\&([0-9abcdef])", Util.COLOR_PREFIX + "$1");
 				String[] lines = set.split("\\[NEWLINE\\]");
 				int max = lines.length;
 				if (max > 4) max = 4;
