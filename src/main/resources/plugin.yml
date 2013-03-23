@@ -1,10 +1,10 @@
 name: Jail
 main: com.matejdro.bukkit.jail.Jail
-version: 2.4.0-pre
+version: 2.4.0-SNAPSHOT
 description: Ban too harsh? Kick/mute/whatever not enough? Jail bad players!
 author: matejdro
 website: dev.bukkit.org/server-mods/jail/
-softdepend: [Spout, WorldEdit, Vault]
+softdepend: [WorldEdit, Vault]
 commands:
     jailcreate:
         description: Creates a new jail zone.

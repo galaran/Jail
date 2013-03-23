@@ -3,3 +3,6 @@ doc/*
 bin/
 .classpath
 .project
+
+.idea/*
+Jail.iml
